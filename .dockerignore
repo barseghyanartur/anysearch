@@ -1,0 +1,9 @@
+.benchmarks
+.pytest_cache
+.tox
+build
+codebin
+dist
+docs
+docs_src
+htmlcov
