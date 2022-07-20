@@ -71,3 +71,8 @@ tox:
 	ANYSEARCH_PREFERRED_BACKEND=OpenSearch tox
 	ANYSEARCH_PREFERRED_BACKEND=Elasticsearch tox
 	tox
+
+release:
+	python setup.py register
+	python setup.py sdist bdist_wheel
+	twine upload dist/* --verbose
