@@ -83,37 +83,39 @@ Usage
 =====
 ``elasticsearch-dsl``/``opensearch-dsl``
 ----------------------------------------
+How-to
+~~~~~~
 In ``elasticsearch-dsl`` you would do:
 
 .. code-block:: python
 
-    from elasticsearch_dsl import connections
-    from elasticsearch_dsl import Keyword
+    from elasticsearch_dsl import AggsProxy, connections, Keyword
     from elasticsearch_dsl.document import Document
 
 In ``opensearch-dsl`` you would do:
 
 .. code-block:: python
 
-    from opensearch_dsl import connections
-    from opensearch_dsl import Keyword
+    from opensearch_dsl import AggsProxy, connections, Keyword
     from opensearch_dsl.document import Document
 
 With ``anysearch`` you would change that to:
 
 .. code-block:: python
 
-    from anysearch.search_dsl import connections
-    from anysearch.search_dsl import Keyword
+    from anysearch.search_dsl import AggsProxy, connections, Keyword
     from anysearch.search_dsl.document import Document
+
 
 ``django-elasticsearch-dsl``/``django-opensearch-dsl``
 ------------------------------------------------------
+How-to
+~~~~~~
 In ``django-elasticsearch-dsl`` you would do:
 
 .. code-block:: python
 
-    from django_elasticsearch_dsl import fields
+    from django_elasticsearch_dsl import fields, registry
     from django_elasticsearch_dsl.documents import Document
     from django_elasticsearch_dsl.fields import TextField
 
@@ -121,7 +123,7 @@ In ``opensearch-dsl`` you would do:
 
 .. code-block:: python
 
-    from django_opensearch_dsl import fields
+    from django_opensearch_dsl import fields, registry
     from django_opensearch_dsl.documents import Document
     from django_opensearch_dsl.fields import TextField
 
@@ -129,7 +131,7 @@ With ``anysearch`` you would change that to:
 
 .. code-block:: python
 
-    from anysearch.django_search_dsl import fields
+    from anysearch.django_search_dsl import fields, registry
     from anysearch.django_search_dsl.documents import Document
     from anysearch.django_search_dsl.fields import TextField
 

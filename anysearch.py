@@ -1,6 +1,8 @@
 """
-Compatibility module for elasticsearch and opensearch. Most of the code
-has been copied from six package.
+Compatibility library for smooth support of Elasticsearch and
+OpenSearch (including *search-dsl and django-*search-dsl packages).
+The concept and some parts of the code have been snatched from the famous `six`
+package.
 """
 import logging
 import os
@@ -8,6 +10,13 @@ import subprocess
 import sys
 import types
 from importlib.util import spec_from_loader
+
+__title__ = "anysearch"
+__version__ = "0.1.1"
+__author__ = "Artur Barseghyan <artur.barseghyan@gmail.com>"
+__copyright__ = "2022 Artur Barseghyan"
+__license__ = "MIT"
+
 
 LOGGER = logging.getLogger(__name__)
 

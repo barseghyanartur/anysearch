@@ -49,6 +49,7 @@ pip-compile:
 	pip-compile requirements/opensearch.in
 	pip-compile requirements/test.in
 	pip-compile requirements/dev.in
+	pip-compile requirements/docs.in
 
 install-pip-tools:
 	pip install -r requirements/build.in
@@ -76,3 +77,10 @@ release:
 	python setup.py register
 	python setup.py sdist bdist_wheel
 	twine upload dist/* --verbose
+
+build-docs:
+	sphinx-build -n -a -b html docs builddocs
+	cd builddocs && zip -r ../builddocs.zip . -x ".*" && cd ..
+
+rebuild-docs:
+	sphinx-apidoc anysearch --full -o docs -H 'anysearch' -A 'Artur Barseghyan <artur.barseghyan@gmail.com>' -f -d 20
