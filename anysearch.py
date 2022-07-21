@@ -19,6 +19,13 @@ __copyright__ = "2022 Artur Barseghyan"
 __license__ = "MIT"
 
 
+__title__ = "anysearch"
+__version__ = "0.1.1"
+__author__ = "Artur Barseghyan <artur.barseghyan@gmail.com>"
+__copyright__ = "2022 Artur Barseghyan"
+__license__ = "MIT"
+
+
 LOGGER = logging.getLogger(__name__)
 
 
