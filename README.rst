@@ -17,7 +17,7 @@ See the documentation for more information on what is provided.
     :target: https://pypi.python.org/pypi/anysearch/
     :alt: Supported Python versions
 
-.. image:: https://github.com/barseghyanartur/anysearch/workflows/test/badge.svg
+.. image:: https://github.com/barseghyanartur/anysearch/workflows/python-package/badge.svg
    :target: https://github.com/barseghyanartur/anysearch/actions
    :alt: Build Status
 

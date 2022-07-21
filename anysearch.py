@@ -10,6 +10,14 @@ import subprocess
 import sys
 import types
 from importlib.util import spec_from_loader
+from typing import Set
+
+__title__ = "anysearch"
+__version__ = "0.1.2"
+__author__ = "Artur Barseghyan <artur.barseghyan@gmail.com>"
+__copyright__ = "2022 Artur Barseghyan"
+__license__ = "MIT"
+
 
 __title__ = "anysearch"
 __version__ = "0.1.1"
@@ -21,7 +29,7 @@ __license__ = "MIT"
 LOGGER = logging.getLogger(__name__)
 
 
-def get_installed_packages() -> set[str]:
+def get_installed_packages() -> Set[str]:
     """Get installed packages.
 
     :return: Set of installed packages.
@@ -38,7 +46,7 @@ def get_installed_packages() -> set[str]:
 
 
 def check_if_package_is_installed(
-    package_name, installed_packages: set[str] = None
+    package_name, installed_packages: Set[str] = None
 ) -> bool:
     """Check if a package is installed.
 
@@ -419,7 +427,12 @@ _search_dsl_moved_attributes = [
     # **********************************************
     # ********** Additional moved attributes *******
     # **********************************************
-    MovedAttribute("AggsProxy", "elasticsearch_dsl.search", "opensearch_dsl.search"),
+    MovedAttribute(
+        "AggsProxy", "elasticsearch_dsl.search", "opensearch_dsl.search"
+    ),
+    MovedAttribute(
+        "MoreLikeThis", "elasticsearch_dsl.query", "opensearch_dsl.query"
+    ),
 ]
 
 for _search_dsl_attr in _search_dsl_moved_attributes:
@@ -507,8 +520,9 @@ _django_search_dsl_moved_attributes = [
     # ********* Additional moved attributes ********
     # **********************************************
     MovedAttribute(
-        "registry", "django_elasticsearch_dsl.registries",
-        "django_opensearch_dsl.registries"
+        "registry",
+        "django_elasticsearch_dsl.registries",
+        "django_opensearch_dsl.registries",
     ),
 ]
 
