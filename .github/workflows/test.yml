@@ -40,4 +40,6 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest
+        ANYSEARCH_PREFERRED_BACKEND=OpenSearch pytest -vvv
+        ANYSEARCH_PREFERRED_BACKEND=Elasticsearch pytest -vvv
+        pytest -vvv
