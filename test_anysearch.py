@@ -1,5 +1,4 @@
 import logging
-import os
 import unittest
 from importlib import import_module
 from unittest import mock
@@ -7,11 +6,13 @@ from unittest import mock
 from anysearch import (
     ELASTICSEARCH,
     OPENSEARCH,
-    _import_module,
-    check_if_package_is_installed,
     detect_search_backend,
-    get_installed_packages,
 )
+
+__title__ = "test_anysearch"
+__author__ = "Artur Barseghyan <artur.barseghyan@gmail.com>"
+__copyright__ = "2022 Artur Barseghyan"
+__license__ = "MIT"
 
 LOGGER = logging.getLogger(__name__)
 

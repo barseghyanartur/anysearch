@@ -15,11 +15,18 @@ are used for versioning (schema follows below):
   0.3.4 to 0.4).
 - All backwards incompatible changes are mentioned in this document.
 
+0.1.2
+-----
+2022-07-21
+
+- Minor Python 3.7 and 3.8 fixes.
+
 0.1.1
 -----
 2022-07-21
 
 - Minor improvements.
+- Add docs.
 
 0.1
 ---
