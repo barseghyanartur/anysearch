@@ -407,6 +407,10 @@ _search_dsl_moved_attributes = [
     MovedAttribute("DslBase", "elasticsearch_dsl", "opensearch_dsl"),
     # .wrappers
     MovedAttribute("Range", "elasticsearch_dsl", "opensearch_dsl"),
+    # **********************************************
+    # ********** Additional moved attributes *******
+    # **********************************************
+    MovedAttribute("AggsProxy", "elasticsearch_dsl.search", "opensearch_dsl.search"),
 ]
 
 for _search_dsl_attr in _search_dsl_moved_attributes:
@@ -490,6 +494,13 @@ _django_search_dsl_moved_attributes = [
         "Document", "django_elasticsearch_dsl", "django_opensearch_dsl"
     ),
     # MovedAttribute("Index", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+    # **********************************************
+    # ********* Additional moved attributes ********
+    # **********************************************
+    MovedAttribute(
+        "registry", "django_elasticsearch_dsl.registries",
+        "django_opensearch_dsl.registries"
+    ),
 ]
 
 for _django_search_dsl_attr in _django_search_dsl_moved_attributes:
