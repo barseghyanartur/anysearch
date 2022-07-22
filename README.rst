@@ -81,6 +81,28 @@ For ``OpenSearch``:
 
 Usage
 =====
+``elasticsearch``/``opensearch``
+----------------------------------------
+How-to
+~~~~~~
+In ``elasticsearch`` you would do:
+
+.. code-block:: python
+
+    from elasticsearch import Elasticsearch
+
+In ``opensearch-dsl`` you would do:
+
+.. code-block:: python
+
+    from opensearch_py import OpenSearch
+
+With ``anysearch`` you would change that to:
+
+.. code-block:: python
+
+    from anysearch.search import AnySearch
+
 ``elasticsearch-dsl``/``opensearch-dsl``
 ----------------------------------------
 How-to
@@ -105,7 +127,6 @@ With ``anysearch`` you would change that to:
 
     from anysearch.search_dsl import AggsProxy, connections, Keyword
     from anysearch.search_dsl.document import Document
-
 
 ``django-elasticsearch-dsl``/``django-opensearch-dsl``
 ------------------------------------------------------
