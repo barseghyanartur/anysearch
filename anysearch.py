@@ -13,18 +13,10 @@ from importlib.util import spec_from_loader
 from typing import Set
 
 __title__ = "anysearch"
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 __author__ = "Artur Barseghyan <artur.barseghyan@gmail.com>"
 __copyright__ = "2022 Artur Barseghyan"
 __license__ = "MIT"
-
-
-__title__ = "anysearch"
-__version__ = "0.1.1"
-__author__ = "Artur Barseghyan <artur.barseghyan@gmail.com>"
-__copyright__ = "2022 Artur Barseghyan"
-__license__ = "MIT"
-
 
 LOGGER = logging.getLogger(__name__)
 
@@ -255,7 +247,57 @@ class _SearchMovedItems(_LazyModule):
 
 
 _search_moved_attributes = [
-    # TODO add more moved items
+    # elasticsearch/opensearch
+    # **********************************************
+    # **************** Moved modules ***************
+    # **********************************************
+    # .
+
+    # **********************************************
+    # ************* Moved attributes ***************
+    # **********************************************
+    # .
+    MovedAttribute("__version__", "elasticsearch", "opensearchpy"),
+    MovedAttribute(
+        "AnySearch",
+        "elasticsearch",
+        "opensearchpy",
+        "Elasticsearch",
+        "OpenSearch",
+    ),
+    MovedAttribute("Transport", "elasticsearch", "opensearchpy"),
+    MovedAttribute("ConnectionPool", "elasticsearch", "opensearchpy"),
+    MovedAttribute("ConnectionSelector", "elasticsearch", "opensearchpy"),
+    MovedAttribute("RoundRobinSelector", "elasticsearch", "opensearchpy"),
+    MovedAttribute("JSONSerializer", "elasticsearch", "opensearchpy"),
+    MovedAttribute("Connection", "elasticsearch", "opensearchpy"),
+    MovedAttribute("RequestsHttpConnection", "elasticsearch", "opensearchpy"),
+    MovedAttribute("Urllib3HttpConnection", "elasticsearch", "opensearchpy"),
+    MovedAttribute("ImproperlyConfigured", "elasticsearch", "opensearchpy"),
+    MovedAttribute(
+        "AnySearchException",
+        "elasticsearch",
+        "opensearchpy",
+        "ElasticsearchException",
+        "OpenSearchException",
+    ),
+    MovedAttribute("SerializationError", "elasticsearch", "opensearchpy"),
+    MovedAttribute("TransportError", "elasticsearch", "opensearchpy"),
+    MovedAttribute("NotFoundError", "elasticsearch", "opensearchpy"),
+    MovedAttribute("ConflictError", "elasticsearch", "opensearchpy"),
+    MovedAttribute("RequestError", "elasticsearch", "opensearchpy"),
+    MovedAttribute("ConnectionError", "elasticsearch", "opensearchpy"),
+    MovedAttribute("SSLError", "elasticsearch", "opensearchpy"),
+    MovedAttribute("ConnectionTimeout", "elasticsearch", "opensearchpy"),
+    MovedAttribute("AuthenticationException", "elasticsearch", "opensearchpy"),
+    MovedAttribute("AuthorizationException", "elasticsearch", "opensearchpy"),
+    MovedAttribute(
+        "AnySearchDeprecationWarning",
+        "elasticsearch",
+        "opensearchpy",
+        "ElasticsearchDeprecationWarning",
+        "OpenSearchDeprecationWarning",
+    ),
 ]
 
 for _search_attr in _search_moved_attributes:
@@ -267,7 +309,6 @@ try:
     del _search_attr
 except:
     pass
-
 
 _SearchMovedItems._moved_attributes = _search_moved_attributes
 
@@ -345,9 +386,13 @@ _search_dsl_moved_attributes = [
     MovedAttribute("InnerDoc", "elasticsearch_dsl", "opensearch_dsl"),
     MovedAttribute("MetaField", "elasticsearch_dsl", "opensearch_dsl"),
     # .exceptions
-    # MovedAttribute(
-    #     "ElasticsearchDslException", "elasticsearch_dsl", "opensearch_dsl"
-    # ),
+    MovedAttribute(
+        "AnySearchDslException",
+        "elasticsearch_dsl",
+        "opensearch_dsl",
+        "ElasticsearchDslException",
+        "OpenSearchDslException",
+    ),
     MovedAttribute("IllegalOperation", "elasticsearch_dsl", "opensearch_dsl"),
     MovedAttribute("UnknownDslObject", "elasticsearch_dsl", "opensearch_dsl"),
     MovedAttribute(

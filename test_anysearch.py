@@ -26,6 +26,53 @@ def MovedAttribute(*args):
     """Moved attribute."""
     return args
 
+SEARCH_MOVED_MODULES = [
+
+]
+SEARCH_MOVED_ATTRIBUTES = [
+    # .
+    # MovedAttribute("__version__", "elasticsearch", "opensearchpy"),
+    MovedAttribute(
+        "AnySearch",
+        "elasticsearch",
+        "opensearchpy",
+        "Elasticsearch",
+        "OpenSearch",
+    ),
+    MovedAttribute("Transport", "elasticsearch", "opensearchpy"),
+    MovedAttribute("ConnectionPool", "elasticsearch", "opensearchpy"),
+    MovedAttribute("ConnectionSelector", "elasticsearch", "opensearchpy"),
+    MovedAttribute("RoundRobinSelector", "elasticsearch", "opensearchpy"),
+    MovedAttribute("JSONSerializer", "elasticsearch", "opensearchpy"),
+    MovedAttribute("Connection", "elasticsearch", "opensearchpy"),
+    MovedAttribute("RequestsHttpConnection", "elasticsearch", "opensearchpy"),
+    MovedAttribute("Urllib3HttpConnection", "elasticsearch", "opensearchpy"),
+    MovedAttribute("ImproperlyConfigured", "elasticsearch", "opensearchpy"),
+    MovedAttribute(
+        "AnySearchException",
+        "elasticsearch",
+        "opensearchpy",
+        "ElasticsearchException",
+        "OpenSearchException",
+    ),
+    MovedAttribute("SerializationError", "elasticsearch", "opensearchpy"),
+    MovedAttribute("TransportError", "elasticsearch", "opensearchpy"),
+    MovedAttribute("NotFoundError", "elasticsearch", "opensearchpy"),
+    MovedAttribute("ConflictError", "elasticsearch", "opensearchpy"),
+    MovedAttribute("RequestError", "elasticsearch", "opensearchpy"),
+    MovedAttribute("ConnectionError", "elasticsearch", "opensearchpy"),
+    MovedAttribute("SSLError", "elasticsearch", "opensearchpy"),
+    MovedAttribute("ConnectionTimeout", "elasticsearch", "opensearchpy"),
+    MovedAttribute("AuthenticationException", "elasticsearch", "opensearchpy"),
+    MovedAttribute("AuthorizationException", "elasticsearch", "opensearchpy"),
+    # MovedAttribute(
+    #     "AnySearchDeprecationWarning",
+    #     "elasticsearch",
+    #     "opensearchpy",
+    #     "ElasticsearchDeprecationWarning",
+    #     "OpenSearchDeprecationWarning",
+    # ),
+]
 
 SEARCH_DSL_MOVED_MODULES = [
     MovedModule("aggs", "elasticsearch_dsl", "opensearch_dsl"),
@@ -215,12 +262,14 @@ class AnySearchBaseTestCase(unittest.TestCase):
         else:
             LOGGER.exception(f"Pass: {attr.__name__} == {name}")
 
-    def _test_module_moved_attributes(self, module, name, package):
+    def _test_module_moved_attributes(self, module, name, package, orig_name=None):
         with self.subTest(f"name: {name}, package: {package}"):
+            if not orig_name:
+                orig_name = name
             module_path = f"anysearch.{module}"
             _module = import_module(module_path)
             attr = getattr(_module, name)
-            self._assert_expected_attribute_path(attr, package, name)
+            self._assert_expected_attribute_path(attr, package, orig_name)
             # self._check_expected_attribute_path(attr, package, name)
 
     def _test_module_moved_attributes_type_shortcuts(
@@ -242,6 +291,44 @@ class AnySearchBaseTestCase(unittest.TestCase):
             attr = getattr(_module, name)
             self._assert_expected_module_path(attr, package, name)
             # self._check_expected_module_path(attr, package, name)
+
+
+class SearchTestCase(AnySearchBaseTestCase):
+    """Test search."""
+
+    def _test_moved_attributes(self, name, package, orig_name=None):
+        self._test_module_moved_attributes("search", name, package, orig_name)
+
+    # **************************************************
+    # ******************** opensearch ******************
+    # **************************************************
+    @mock.patch.dict("os.environ", {"ANYSEARCH_PREFERRED_BACKEND": OPENSEARCH})
+    @unittest.skipIf(
+        detect_search_backend() != OPENSEARCH,
+        "Skipped, because opensearch is not installed.",
+    )
+    def test_opensearch_moved_attributes(self):
+        """Test OpenSearch."""
+        for name, _, package, *options in SEARCH_MOVED_ATTRIBUTES:
+            orig_name = options[1] if options else name
+            self._test_moved_attributes(name, package, orig_name)
+
+    # **************************************************
+    # ******************* elasticsearch ****************
+    # **************************************************
+
+    @mock.patch.dict(
+        "os.environ", {"ANYSEARCH_PREFERRED_BACKEND": ELASTICSEARCH}
+    )
+    @unittest.skipIf(
+        detect_search_backend() != ELASTICSEARCH,
+        "Skipped, because elasticsearch is not installed.",
+    )
+    def test_elasticsearch_moved_attributes(self):
+        """Test Elasticsearch."""
+        for name, package, _, *options in SEARCH_MOVED_ATTRIBUTES:
+            orig_name = options[0] if options else name
+            self._test_moved_attributes(name, package, orig_name)
 
 
 class SearchDSLTestCase(AnySearchBaseTestCase):
