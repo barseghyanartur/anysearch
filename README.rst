@@ -89,19 +89,19 @@ In ``elasticsearch`` you would do:
 
 .. code-block:: python
 
-    from elasticsearch import Elasticsearch
+    from elasticsearch import Connection, Elasticsearch
 
-In ``opensearch-dsl`` you would do:
+In ``opensearch`` you would do:
 
 .. code-block:: python
 
-    from opensearch_py import OpenSearch
+    from opensearch_py import Connection, OpenSearch
 
 With ``anysearch`` you would change that to:
 
 .. code-block:: python
 
-    from anysearch.search import AnySearch
+    from anysearch.search import Connection, AnySearch
 
 ``elasticsearch-dsl``/``opensearch-dsl``
 ----------------------------------------
