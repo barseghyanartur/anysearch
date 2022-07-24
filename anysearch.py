@@ -567,14 +567,24 @@ _django_search_dsl_moved_attributes = [
     MovedAttribute(
         "registry",
         "django_elasticsearch_dsl.registries",
-        "django_opensearch_dsl.registries",
+        "django_opensearch_dsl.registries"
     ),
     MovedAttribute(
         "DjangoAnySearchConfig",
         "django_elasticsearch_dsl.apps",
         "django_opensearch_dsl.apps",
         "DEDConfig",
-        "DODConfig",
+        "DODConfig"
+    ),
+    MovedAttribute(
+        "RealTimeSignalProcessor",
+        "django_elasticsearch_dsl.signals",
+        "django_opensearch_dsl.signals"
+    ),
+    MovedAttribute(
+        "BaseSignalProcessor",
+        "django_elasticsearch_dsl.signals",
+        "django_opensearch_dsl.signals"
     ),
 ]
 

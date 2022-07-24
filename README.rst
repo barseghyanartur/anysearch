@@ -158,6 +158,8 @@ With ``anysearch`` you would change that to:
 
 Configuration
 ~~~~~~~~~~~~~
+``INSTALLED_APPS``
+^^^^^^^^^^^^^^^^^^
 Both ``django-elasticsearch-dsl`` and ``django-opensearch-dsl`` will need to
 be added to your ``INSTALLED_APPS`` list.
 
@@ -190,6 +192,25 @@ With ``anysearch`` you would change that to:
         "anysearch.django_search_dsl.DjangoAnySearchConfig",
         ...
     )
+
+Tuning
+^^^^^^
+If you write a reusable app that should work with both ``Elasticsearch``
+and ``OpenSearch``, you could specify your settings as follows:
+
+.. code-block:: python
+
+    # Elasticsearch configuration
+    ELASTICSEARCH_DSL = {
+        'default': {
+            'hosts': 'localhost:9200',
+            'timeout': 30,
+        },
+    }
+    OPENSEARCH_DSL = ELASTICSEARCH_DSL
+
+    ELASTICSEARCH_DSL_SIGNAL_PROCESSOR = "anysearch.django_search_dsl.RealTimeSignalProcessor"
+    OPENSEARCH_DSL_SIGNAL_PROCESSOR = ELASTICSEARCH_DSL_SIGNAL_PROCESSOR
 
 Testing
 =======
