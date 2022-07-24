@@ -15,6 +15,14 @@ are used for versioning (schema follows below):
   0.3.4 to 0.4).
 - All backwards incompatible changes are mentioned in this document.
 
+0.1.5
+-----
+2022-07-24
+
+Loosen Python requirements to allow Python 3.6 installations. Note, that
+although package is not "officially" tested with Python 3.6, it has been tested
+locally.
+
 0.1.4
 -----
 2022-07-24

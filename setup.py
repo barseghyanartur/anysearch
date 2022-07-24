@@ -2,7 +2,7 @@ import os
 
 from setuptools import setup
 
-version = "0.1.4"
+version = "0.1.5"
 
 try:
     readme = open(os.path.join(os.path.dirname(__file__), "README.rst")).read()
@@ -51,7 +51,7 @@ setup(
     url="https://github.com/barseghyanartur/anysearch/",
     py_modules=["anysearch"],
     license="MIT",
-    python_requires=">=3.7",
+    python_requires=">=3.6",
     install_requires=(install_requires + extras_require),
     tests_require=tests_require,
     include_package_data=True,

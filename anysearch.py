@@ -13,7 +13,7 @@ from importlib.util import spec_from_loader
 from typing import Set
 
 __title__ = "anysearch"
-__version__ = "0.1.4"
+__version__ = "0.1.5"
 __author__ = "Artur Barseghyan <artur.barseghyan@gmail.com>"
 __copyright__ = "2022 Artur Barseghyan"
 __license__ = "MIT"
