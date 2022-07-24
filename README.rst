@@ -85,13 +85,13 @@ Usage
 ----------------------------------------
 How-to
 ~~~~~~
-In ``elasticsearch`` you would do:
+With ``elasticsearch`` you would do:
 
 .. code-block:: python
 
     from elasticsearch import Connection, Elasticsearch
 
-In ``opensearch`` you would do:
+With ``opensearch`` you would do:
 
 .. code-block:: python
 
@@ -107,14 +107,14 @@ With ``anysearch`` you would change that to:
 ----------------------------------------
 How-to
 ~~~~~~
-In ``elasticsearch-dsl`` you would do:
+With ``elasticsearch-dsl`` you would do:
 
 .. code-block:: python
 
     from elasticsearch_dsl import AggsProxy, connections, Keyword
     from elasticsearch_dsl.document import Document
 
-In ``opensearch-dsl`` you would do:
+With ``opensearch-dsl`` you would do:
 
 .. code-block:: python
 
@@ -132,7 +132,7 @@ With ``anysearch`` you would change that to:
 ------------------------------------------------------
 How-to
 ~~~~~~
-In ``django-elasticsearch-dsl`` you would do:
+With ``django-elasticsearch-dsl`` you would do:
 
 .. code-block:: python
 
@@ -140,7 +140,7 @@ In ``django-elasticsearch-dsl`` you would do:
     from django_elasticsearch_dsl.documents import Document
     from django_elasticsearch_dsl.fields import TextField
 
-In ``opensearch-dsl`` you would do:
+With ``opensearch-dsl`` you would do:
 
 .. code-block:: python
 
@@ -155,6 +155,41 @@ With ``anysearch`` you would change that to:
     from anysearch.django_search_dsl import fields, registry
     from anysearch.django_search_dsl.documents import Document
     from anysearch.django_search_dsl.fields import TextField
+
+Configuration
+~~~~~~~~~~~~~
+Both ``django-elasticsearch-dsl`` and ``django-opensearch-dsl`` will need to
+be added to your ``INSTALLED_APPS`` list.
+
+With ``django-elasticsearch-dsl`` you would do:
+
+.. code-block:: python
+
+    INSTALLED_APPS = (
+        ...
+        "django_elasticsearch_dsl",
+        ...
+    )
+
+With ``django-opensearch-dsl`` you would do:
+
+.. code-block:: python
+
+    INSTALLED_APPS = (
+        ...
+        "django_opensearch_dsl",
+        ...
+    )
+
+With ``anysearch`` you would change that to:
+
+.. code-block:: python
+
+    INSTALLED_APPS = (
+        ...
+        "anysearch.django_search_dsl.DjangoAnySearchConfig",
+        ...
+    )
 
 Testing
 =======

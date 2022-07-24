@@ -13,7 +13,7 @@ from importlib.util import spec_from_loader
 from typing import Set
 
 __title__ = "anysearch"
-__version__ = "0.1.3"
+__version__ = "0.1.4"
 __author__ = "Artur Barseghyan <artur.barseghyan@gmail.com>"
 __copyright__ = "2022 Artur Barseghyan"
 __license__ = "MIT"
@@ -568,6 +568,13 @@ _django_search_dsl_moved_attributes = [
         "registry",
         "django_elasticsearch_dsl.registries",
         "django_opensearch_dsl.registries",
+    ),
+    MovedAttribute(
+        "DjangoAnySearchConfig",
+        "django_elasticsearch_dsl.apps",
+        "django_opensearch_dsl.apps",
+        "DEDConfig",
+        "DODConfig",
     ),
 ]
 
