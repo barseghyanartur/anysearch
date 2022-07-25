@@ -13,7 +13,7 @@ from importlib.util import spec_from_loader
 from typing import Set
 
 __title__ = "anysearch"
-__version__ = "0.1.5"
+__version__ = "0.1.6"
 __author__ = "Artur Barseghyan <artur.barseghyan@gmail.com>"
 __copyright__ = "2022 Artur Barseghyan"
 __license__ = "MIT"
@@ -77,6 +77,8 @@ def detect_search_backend():
 
 
 SEARCH_BACKEND = detect_search_backend()
+IS_ELASTICSEARCH = SEARCH_BACKEND == ELASTICSEARCH
+IS_OPENSEARCH = SEARCH_BACKEND == OPENSEARCH
 
 
 def _import_module(name):
@@ -104,7 +106,7 @@ class _LazyDescr(object):
 class MovedModule(_LazyDescr):
     def __init__(self, name, old, new=None):
         super(MovedModule, self).__init__(name)
-        if SEARCH_BACKEND == OPENSEARCH:
+        if IS_OPENSEARCH:
             if new is None:
                 new = name
             self.mod = new
@@ -138,7 +140,7 @@ class _LazyModule(types.ModuleType):
 class MovedAttribute(_LazyDescr):
     def __init__(self, name, old_mod, new_mod, old_attr=None, new_attr=None):
         super(MovedAttribute, self).__init__(name)
-        if SEARCH_BACKEND == OPENSEARCH:
+        if IS_OPENSEARCH:
             if new_mod is None:
                 new_mod = name
             self.mod = new_mod
@@ -252,7 +254,6 @@ _search_moved_attributes = [
     # **************** Moved modules ***************
     # **********************************************
     # .
-
     # **********************************************
     # ************* Moved attributes ***************
     # **********************************************
@@ -567,24 +568,24 @@ _django_search_dsl_moved_attributes = [
     MovedAttribute(
         "registry",
         "django_elasticsearch_dsl.registries",
-        "django_opensearch_dsl.registries"
+        "django_opensearch_dsl.registries",
     ),
     MovedAttribute(
         "DjangoAnySearchConfig",
         "django_elasticsearch_dsl.apps",
         "django_opensearch_dsl.apps",
         "DEDConfig",
-        "DODConfig"
+        "DODConfig",
     ),
     MovedAttribute(
         "RealTimeSignalProcessor",
         "django_elasticsearch_dsl.signals",
-        "django_opensearch_dsl.signals"
+        "django_opensearch_dsl.signals",
     ),
     MovedAttribute(
         "BaseSignalProcessor",
         "django_elasticsearch_dsl.signals",
-        "django_opensearch_dsl.signals"
+        "django_opensearch_dsl.signals",
     ),
 ]
 

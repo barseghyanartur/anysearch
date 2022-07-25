@@ -6,7 +6,9 @@ from unittest import mock
 from anysearch import (
     ELASTICSEARCH,
     OPENSEARCH,
+    check_if_package_is_installed,
     detect_search_backend,
+    get_installed_packages,
 )
 
 __title__ = "test_anysearch"
@@ -26,9 +28,8 @@ def MovedAttribute(*args):
     """Moved attribute."""
     return args
 
-SEARCH_MOVED_MODULES = [
 
-]
+SEARCH_MOVED_MODULES = []
 SEARCH_MOVED_ATTRIBUTES = [
     # .
     # MovedAttribute("__version__", "elasticsearch", "opensearchpy"),
@@ -262,7 +263,9 @@ class AnySearchBaseTestCase(unittest.TestCase):
         else:
             LOGGER.exception(f"Pass: {attr.__name__} == {name}")
 
-    def _test_module_moved_attributes(self, module, name, package, orig_name=None):
+    def _test_module_moved_attributes(
+        self, module, name, package, orig_name=None
+    ):
         with self.subTest(f"name: {name}, package: {package}"):
             if not orig_name:
                 orig_name = name
@@ -504,3 +507,12 @@ class AnySearchTestCase(unittest.TestCase):
             "os.environ", {"ANYSEARCH_PREFERRED_BACKEND": OPENSEARCH}
         ):
             self.assertEqual(detect_search_backend(), OPENSEARCH)
+
+    def test_get_installed_packages(self):
+        """Test get_installed_packages."""
+        installed_packages = get_installed_packages()
+        self.assertIn("Django", installed_packages)
+
+    def test_check_if_package_is_installed(self):
+        """Test get_installed_packages."""
+        self.assertTrue(check_if_package_is_installed("Django"))

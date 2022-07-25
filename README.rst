@@ -195,8 +195,8 @@ With ``anysearch`` you would change that to:
 
 Tuning
 ^^^^^^
-If you write a reusable app that should work with both ``Elasticsearch``
-and ``OpenSearch``, you could specify your settings as follows:
+If you intent to support both ``Elasticsearch`` and ``OpenSearch``, you could
+specify your settings as follows:
 
 .. code-block:: python
 
