@@ -29,8 +29,8 @@ See the documentation for more information on what is provided.
    :target: https://github.com/barseghyanartur/anysearch/#License
    :alt: MIT
 
-.. image:: https://coveralls.io/repos/github/barseghyanartur/anysearch/badge.svg?branch=master
-    :target: https://coveralls.io/github/barseghyanartur/anysearch?branch=master
+.. image:: https://coveralls.io/repos/github/barseghyanartur/anysearch/badge.svg?branch=main
+    :target: https://coveralls.io/github/barseghyanartur/anysearch?branch=main
     :alt: Coverage
 
 Documentation
