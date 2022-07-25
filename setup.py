@@ -26,6 +26,7 @@ setup(
     description="Elasticsearch and OpenSearch compatibility library.",
     long_description=readme,
     classifiers=[
+        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
