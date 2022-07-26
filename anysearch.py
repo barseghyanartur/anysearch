@@ -13,7 +13,7 @@ from importlib.util import spec_from_loader
 from typing import Set
 
 __title__ = "anysearch"
-__version__ = "0.1.6"
+__version__ = "0.1.7"
 __author__ = "Artur Barseghyan <artur.barseghyan@gmail.com>"
 __copyright__ = "2022 Artur Barseghyan"
 __license__ = "MIT"
@@ -254,6 +254,21 @@ _search_moved_attributes = [
     # **************** Moved modules ***************
     # **********************************************
     # .
+    MovedModule("client", "elasticsearch", "opensearchpy"),
+    MovedModule("compat", "elasticsearch", "opensearchpy"),
+    MovedModule("exceptions", "elasticsearch", "opensearchpy"),
+    MovedModule("serializer", "elasticsearch", "opensearchpy"),
+    MovedModule("transport", "elasticsearch", "opensearchpy"),
+    MovedModule("helpers", "elasticsearch", "opensearchpy"),
+    # As attributes of the module.
+    MovedAttribute("client", "elasticsearch", "opensearchpy"),
+    MovedAttribute("compat", "elasticsearch", "opensearchpy"),
+    MovedAttribute("exceptions", "elasticsearch", "opensearchpy"),
+    MovedAttribute("serializer", "elasticsearch", "opensearchpy"),
+    MovedAttribute("transport", "elasticsearch", "opensearchpy"),
+    MovedAttribute("helpers", "elasticsearch", "opensearchpy"),
+    MovedAttribute("bulk", "elasticsearch.helpers", "opensearchpy.helpers"),
+    MovedAttribute("parallel_bulk", "elasticsearch.helpers", "opensearchpy.helpers"),
     # **********************************************
     # ************* Moved attributes ***************
     # **********************************************
