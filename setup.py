@@ -2,7 +2,7 @@ import os
 
 from setuptools import setup
 
-version = "0.1.7"
+version = "0.2"
 
 try:
     readme = open(os.path.join(os.path.dirname(__file__), "README.rst")).read()
@@ -45,8 +45,7 @@ setup(
         "Changelog": "https://anysearch.readthedocs.io/"
         "en/latest/changelog.html",
     },
-    keywords="django, elasticsearch, elasticsearch-dsl, opensearch, "
-    "opensearch-dsl",
+    keywords="elasticsearch, elasticsearch-dsl, opensearch, opensearch-dsl",
     author="Artur Barseghyan",
     author_email="artur.barseghyan@gmail.com",
     url="https://github.com/barseghyanartur/anysearch/",

@@ -4,16 +4,12 @@
 #
 #    pip-compile requirements/test.in
 #
-asgiref==3.5.2
-    # via django
 attrs==21.4.0
     # via pytest
 coverage[toml]==6.4.2
     # via pytest-cov
 distlib==0.3.5
     # via virtualenv
-django==4.0.6
-    # via -r requirements/test.in
 filelock==3.7.1
     # via
     #   tox
@@ -45,12 +41,12 @@ pytest-cov==3.0.0
     # via -r requirements/test.in
 pytest-pythonpath==0.7.4
     # via -r requirements/test.in
+pyyaml==6.0
+    # via -r requirements/test.in
 six==1.16.0
     # via
     #   tox
     #   virtualenv
-sqlparse==0.4.2
-    # via django
 toml==0.10.2
     # via
     #   pytest

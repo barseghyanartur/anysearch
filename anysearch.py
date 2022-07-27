@@ -1,6 +1,6 @@
 """
 Compatibility library for smooth support of Elasticsearch and
-OpenSearch (including *search-dsl and django-*search-dsl packages).
+OpenSearch packages (including *search-dsl).
 The concept and some parts of the code have been snatched from the famous `six`
 package.
 """
@@ -13,7 +13,7 @@ from importlib.util import spec_from_loader
 from typing import Set
 
 __title__ = "anysearch"
-__version__ = "0.1.7"
+__version__ = "0.2"
 __author__ = "Artur Barseghyan <artur.barseghyan@gmail.com>"
 __copyright__ = "2022 Artur Barseghyan"
 __license__ = "MIT"
@@ -71,8 +71,8 @@ def detect_search_backend():
     raise Exception(
         "You should either set `ANYSEARCH_BACKEND` env var to `elasticsearch` "
         "or `opensearch` or install a combination of (1) `elasticsearch`, "
-        "`elasticsearch-dsl` and optionally `django-elasticsearch-dsl` or (2) "
-        "`opensearch`, `opensearch-dsl` and optionally `django-opensearch-dsl`."
+        "`elasticsearch-dsl` or (2) "
+        "`opensearch-py`, `opensearch-dsl`."
     )
 
 
@@ -165,7 +165,7 @@ class _AnySearchMetaPathImporter(object):
 
     """
     A meta path importer to import anysearch.search, anysearch.search_dsl,
-    anysearch.django_search_dsl,  and its submodules.
+    and its submodules.
     This class implements a PEP302 finder and loader. It should be compatible
     with Python 2.5 and all existing versions of Python3.
     """
@@ -514,120 +514,120 @@ _SearchDSLMovedItems._moved_attributes = _search_dsl_moved_attributes
 search_dsl = _SearchDSLMovedItems(__name__ + ".search_dsl")
 _importer._add_module(search_dsl, "search_dsl")
 
-# **************************************************
-# **************************************************
-# ************** Django-Search-DSL *****************
-# **************************************************
-# **************************************************
-
-
-class _DjangoSearchDSLMovedItems(_LazyModule):
-
-    """Lazy loading of django_search_dsl objects"""
-
-    __path__ = []
-
-
-_django_search_dsl_moved_attributes = [
-    # **********************************************
-    # **************** Moved modules ***************
-    # **********************************************
-    # django_elasticsearch_dsl/django_opensearch_dsl
-    MovedModule("apps", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-    MovedModule(
-        "documents", "django_elasticsearch_dsl", "django_opensearch_dsl"
-    ),
-    MovedModule(
-        "exceptions", "django_elasticsearch_dsl", "django_opensearch_dsl"
-    ),
-    MovedModule("fields", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-    # MovedModule("indices", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-    # MovedModule("models", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-    MovedModule(
-        "registries", "django_elasticsearch_dsl", "django_opensearch_dsl"
-    ),
-    MovedModule("search", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-    MovedModule("signals", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-    # Again, but now as attributes of the module.
-    MovedAttribute("apps", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-    MovedAttribute(
-        "documents", "django_elasticsearch_dsl", "django_opensearch_dsl"
-    ),
-    MovedAttribute(
-        "exceptions", "django_elasticsearch_dsl", "django_opensearch_dsl"
-    ),
-    MovedAttribute(
-        "fields", "django_elasticsearch_dsl", "django_opensearch_dsl"
-    ),
-    # MovedAttribute("indices", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-    # MovedAttribute("models", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-    MovedAttribute(
-        "registries", "django_elasticsearch_dsl", "django_opensearch_dsl"
-    ),
-    MovedAttribute(
-        "search", "django_elasticsearch_dsl", "django_opensearch_dsl"
-    ),
-    MovedAttribute(
-        "signals", "django_elasticsearch_dsl", "django_opensearch_dsl"
-    ),
-    # **********************************************
-    # *************** Moved attributes *************
-    # **********************************************
-    MovedAttribute(
-        "Document", "django_elasticsearch_dsl", "django_opensearch_dsl"
-    ),
-    # MovedAttribute("Index", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-    # **********************************************
-    # ********* Additional moved attributes ********
-    # **********************************************
-    MovedAttribute(
-        "registry",
-        "django_elasticsearch_dsl.registries",
-        "django_opensearch_dsl.registries",
-    ),
-    MovedAttribute(
-        "DjangoAnySearchConfig",
-        "django_elasticsearch_dsl.apps",
-        "django_opensearch_dsl.apps",
-        "DEDConfig",
-        "DODConfig",
-    ),
-    MovedAttribute(
-        "RealTimeSignalProcessor",
-        "django_elasticsearch_dsl.signals",
-        "django_opensearch_dsl.signals",
-    ),
-    MovedAttribute(
-        "BaseSignalProcessor",
-        "django_elasticsearch_dsl.signals",
-        "django_opensearch_dsl.signals",
-    ),
-]
-
-for _django_search_dsl_attr in _django_search_dsl_moved_attributes:
-    setattr(
-        _DjangoSearchDSLMovedItems,
-        _django_search_dsl_attr.name,
-        _django_search_dsl_attr,
-    )
-    if isinstance(_django_search_dsl_attr, MovedModule):
-        _importer._add_module(
-            _django_search_dsl_attr,
-            "django_search_dsl." + _django_search_dsl_attr.name,
-        )
-
-try:
-    del _django_search_dsl_attr
-except:
-    pass
-
-
-_DjangoSearchDSLMovedItems._moved_attributes = (
-    _django_search_dsl_moved_attributes
-)
-
-django_search_dsl = _DjangoSearchDSLMovedItems(__name__ + ".django_search_dsl")
-_importer._add_module(django_search_dsl, "django_search_dsl")
+# # **************************************************
+# # **************************************************
+# # ************** Django-Search-DSL *****************
+# # **************************************************
+# # **************************************************
+#
+#
+# class _DjangoSearchDSLMovedItems(_LazyModule):
+#
+#     """Lazy loading of django_search_dsl objects"""
+#
+#     __path__ = []
+#
+#
+# _django_search_dsl_moved_attributes = [
+#     # **********************************************
+#     # **************** Moved modules ***************
+#     # **********************************************
+#     # django_elasticsearch_dsl/django_opensearch_dsl
+#     MovedModule("apps", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     MovedModule(
+#         "documents", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
+#     MovedModule(
+#         "exceptions", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
+#     MovedModule("fields", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     # MovedModule("indices", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     # MovedModule("models", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     MovedModule(
+#         "registries", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
+#     MovedModule("search", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     MovedModule("signals", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     # Again, but now as attributes of the module.
+#     MovedAttribute("apps", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     MovedAttribute(
+#         "documents", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
+#     MovedAttribute(
+#         "exceptions", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
+#     MovedAttribute(
+#         "fields", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
+#     # MovedAttribute("indices", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     # MovedAttribute("models", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     MovedAttribute(
+#         "registries", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
+#     MovedAttribute(
+#         "search", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
+#     MovedAttribute(
+#         "signals", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
+#     # **********************************************
+#     # *************** Moved attributes *************
+#     # **********************************************
+#     MovedAttribute(
+#         "Document", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
+#     # MovedAttribute("Index", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     # **********************************************
+#     # ********* Additional moved attributes ********
+#     # **********************************************
+#     MovedAttribute(
+#         "registry",
+#         "django_elasticsearch_dsl.registries",
+#         "django_opensearch_dsl.registries",
+#     ),
+#     MovedAttribute(
+#         "DjangoAnySearchConfig",
+#         "django_elasticsearch_dsl.apps",
+#         "django_opensearch_dsl.apps",
+#         "DEDConfig",
+#         "DODConfig",
+#     ),
+#     MovedAttribute(
+#         "RealTimeSignalProcessor",
+#         "django_elasticsearch_dsl.signals",
+#         "django_opensearch_dsl.signals",
+#     ),
+#     MovedAttribute(
+#         "BaseSignalProcessor",
+#         "django_elasticsearch_dsl.signals",
+#         "django_opensearch_dsl.signals",
+#     ),
+# ]
+#
+# for _django_search_dsl_attr in _django_search_dsl_moved_attributes:
+#     setattr(
+#         _DjangoSearchDSLMovedItems,
+#         _django_search_dsl_attr.name,
+#         _django_search_dsl_attr,
+#     )
+#     if isinstance(_django_search_dsl_attr, MovedModule):
+#         _importer._add_module(
+#             _django_search_dsl_attr,
+#             "django_search_dsl." + _django_search_dsl_attr.name,
+#         )
+#
+# try:
+#     del _django_search_dsl_attr
+# except:
+#     pass
+#
+#
+# _DjangoSearchDSLMovedItems._moved_attributes = (
+#     _django_search_dsl_moved_attributes
+# )
+#
+# django_search_dsl = _DjangoSearchDSLMovedItems(__name__ + ".django_search_dsl")
+# _importer._add_module(django_search_dsl, "django_search_dsl")
 
 # **************************************************
 # **************************************************

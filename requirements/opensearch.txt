@@ -10,26 +10,16 @@ certifi==2022.6.15
     #   requests
 charset-normalizer==2.1.0
     # via requests
-dateutils==0.6.12
-    # via django-opensearch-dsl
-django-opensearch-dsl==0.3.0
-    # via -r requirements/opensearch.in
 idna==3.3
     # via requests
 opensearch==0.9.2
     # via -r requirements/opensearch.in
 opensearch-dsl==1.0.0
-    # via
-    #   -r requirements/opensearch.in
-    #   django-opensearch-dsl
+    # via -r requirements/opensearch.in
 opensearch-py==2.0.0
     # via opensearch-dsl
 python-dateutil==2.8.2
-    # via
-    #   dateutils
-    #   opensearch-dsl
-pytz==2022.1
-    # via dateutils
+    # via opensearch-dsl
 requests==2.28.1
     # via opensearch-py
 six==1.16.0

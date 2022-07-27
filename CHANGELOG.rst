@@ -15,6 +15,15 @@ are used for versioning (schema follows below):
   0.3.4 to 0.4).
 - All backwards incompatible changes are mentioned in this document.
 
+0.2
+---
+2022-07-27
+
+- Dropped support for ``Django`` integration packages. Support for both
+  ``Elasticsearch`` and ``OpenSearch`` will either be built in the
+  ``django-elasticsearch-dsl`` package or a (rebranded)
+  `fork of it <https://github.com/barseghyanartur/django-elasticsearch-dsl/tree/anysearch>`__.
+
 0.1.7
 -----
 2022-07-26

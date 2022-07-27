@@ -4,8 +4,7 @@ anysearch
 ``AnySearch`` is a ``Elasticsearch`` and ``OpenSearch`` compatibility library.
 It provides utility functions for smoothing over the differences between the
 Python libraries with the goal of writing Python code that is compatible on
-both (including the ``*search``, ``*search-dsl`` and ``django-*search-dsl``
-integration packages).
+both (including the ``*search`` and ``*search-dsl`` packages).
 
 See the documentation for more information on what is provided.
 
@@ -128,90 +127,6 @@ With ``anysearch`` you would change that to:
     from anysearch.search_dsl import AggsProxy, connections, Keyword
     from anysearch.search_dsl.document import Document
 
-``django-elasticsearch-dsl``/``django-opensearch-dsl``
-------------------------------------------------------
-How-to
-~~~~~~
-With ``django-elasticsearch-dsl`` you would do:
-
-.. code-block:: python
-
-    from django_elasticsearch_dsl import fields, registry
-    from django_elasticsearch_dsl.documents import Document
-    from django_elasticsearch_dsl.fields import TextField
-
-With ``opensearch-dsl`` you would do:
-
-.. code-block:: python
-
-    from django_opensearch_dsl import fields, registry
-    from django_opensearch_dsl.documents import Document
-    from django_opensearch_dsl.fields import TextField
-
-With ``anysearch`` you would change that to:
-
-.. code-block:: python
-
-    from anysearch.django_search_dsl import fields, registry
-    from anysearch.django_search_dsl.documents import Document
-    from anysearch.django_search_dsl.fields import TextField
-
-Configuration
-~~~~~~~~~~~~~
-``INSTALLED_APPS``
-^^^^^^^^^^^^^^^^^^
-Both ``django-elasticsearch-dsl`` and ``django-opensearch-dsl`` will need to
-be added to your ``INSTALLED_APPS`` list.
-
-With ``django-elasticsearch-dsl`` you would do:
-
-.. code-block:: python
-
-    INSTALLED_APPS = (
-        ...
-        "django_elasticsearch_dsl",
-        ...
-    )
-
-With ``django-opensearch-dsl`` you would do:
-
-.. code-block:: python
-
-    INSTALLED_APPS = (
-        ...
-        "django_opensearch_dsl",
-        ...
-    )
-
-With ``anysearch`` you would change that to:
-
-.. code-block:: python
-
-    INSTALLED_APPS = (
-        ...
-        "anysearch.django_search_dsl.DjangoAnySearchConfig",
-        ...
-    )
-
-Tuning
-^^^^^^
-If you intent to support both ``Elasticsearch`` and ``OpenSearch``, you could
-specify your settings as follows:
-
-.. code-block:: python
-
-    # Elasticsearch configuration
-    ELASTICSEARCH_DSL = {
-        'default': {
-            'hosts': 'localhost:9200',
-            'timeout': 30,
-        },
-    }
-    OPENSEARCH_DSL = ELASTICSEARCH_DSL
-
-    ELASTICSEARCH_DSL_SIGNAL_PROCESSOR = "anysearch.django_search_dsl.RealTimeSignalProcessor"
-    OPENSEARCH_DSL_SIGNAL_PROCESSOR = ELASTICSEARCH_DSL_SIGNAL_PROCESSOR
-
 Testing
 =======
 Project is covered with tests.
@@ -245,7 +160,7 @@ type:
 
 .. code-block:: sh
 
-    pytest test_anysearch.py::DjangoSearchDSLTestCase
+    pytest test_anysearch.py::AnySearchTestCase
 
 It's assumed that you have either ``elasticsearch-dsl`` or ``opensearch-dsl``
 installed. If not, install the requirements first.

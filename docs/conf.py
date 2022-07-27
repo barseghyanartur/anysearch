@@ -253,7 +253,7 @@ texinfo_documents = [
         "anysearch Documentation",
         "Artur Barseghyan <artur.barseghyan@gmail.com>",
         "anysearch",
-        "Compatibility library for smooth support of Elasticsearch and OpenSearch (including *search-dsl and django-*search-dsl packages)",
+        "Compatibility library for smooth support of Elasticsearch and OpenSearch (including both *search and *search-dsl packages)",
         "Miscellaneous",
     ),
 ]

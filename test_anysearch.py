@@ -200,37 +200,37 @@ SEARCH_DSL_MOVED_ATTRIBUTES = [
     MovedAttribute("Range", "elasticsearch_dsl", "opensearch_dsl"),
 ]
 
-DJANGO_SEARCH_DSL_MOVED_MODULES = [
-    # **********************************************
-    # **************** Moved modules ***************
-    # **********************************************
-    # django_elasticsearch_dsl/django_opensearch_dsl
-    MovedModule("apps", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-    MovedModule(
-        "documents", "django_elasticsearch_dsl", "django_opensearch_dsl"
-    ),
-    MovedModule(
-        "exceptions", "django_elasticsearch_dsl", "django_opensearch_dsl"
-    ),
-    MovedModule("fields", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-    # MovedModule("indices", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-    # MovedModule("models", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-    MovedModule(
-        "registries", "django_elasticsearch_dsl", "django_opensearch_dsl"
-    ),
-    MovedModule("search", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-    MovedModule("signals", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-]
-
-DJANGO_SEARCH_DSL_MOVED_ATTRIBUTES = [
-    # **********************************************
-    # *************** Moved attributes *************
-    # **********************************************
-    MovedAttribute(
-        "Document", "django_elasticsearch_dsl", "django_opensearch_dsl"
-    ),
-    # MovedAttribute("Index", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-]
+# DJANGO_SEARCH_DSL_MOVED_MODULES = [
+#     # **********************************************
+#     # **************** Moved modules ***************
+#     # **********************************************
+#     # django_elasticsearch_dsl/django_opensearch_dsl
+#     MovedModule("apps", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     MovedModule(
+#         "documents", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
+#     MovedModule(
+#         "exceptions", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
+#     MovedModule("fields", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     # MovedModule("indices", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     # MovedModule("models", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     MovedModule(
+#         "registries", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
+#     MovedModule("search", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     MovedModule("signals", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+# ]
+#
+# DJANGO_SEARCH_DSL_MOVED_ATTRIBUTES = [
+#     # **********************************************
+#     # *************** Moved attributes *************
+#     # **********************************************
+#     MovedAttribute(
+#         "Document", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
+#     # MovedAttribute("Index", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+# ]
 
 
 class AnySearchBaseTestCase(unittest.TestCase):
@@ -422,77 +422,77 @@ class SearchDSLTestCase(AnySearchBaseTestCase):
             self._test_moved_modules(name, package)
 
 
-class DjangoSearchDSLTestCase(AnySearchBaseTestCase):
-    """Test Django search DSL."""
-
-    def _test_moved_attributes(self, name, package):
-        self._test_module_moved_attributes("django_search_dsl", name, package)
-
-    def _test_moved_attributes_type_shortcuts(self, name, package):
-        self._test_module_moved_attributes_type_shortcuts(
-            "django_search_dsl", name, package
-        )
-
-    def _test_moved_modules(self, name, package):
-        self._test_module_moved_modules("django_search_dsl", name, package)
-
-    # **************************************************
-    # **************** django-opensearch-dsl ***********
-    # **************************************************
-
-    @mock.patch.dict("os.environ", {"ANYSEARCH_PREFERRED_BACKEND": OPENSEARCH})
-    @unittest.skipIf(
-        detect_search_backend() != OPENSEARCH,
-        "Skipped, because opensearch-dsl is not installed.",
-    )
-    def test_django_opensearch_dsl_moved_attributes(self):
-        """Test Django-OpenSearch-DSL."""
-        for name, _, package in DJANGO_SEARCH_DSL_MOVED_ATTRIBUTES:
-            self._test_moved_attributes(name, package)
-
-    @mock.patch.dict("os.environ", {"ANYSEARCH_PREFERRED_BACKEND": OPENSEARCH})
-    @unittest.skipIf(
-        detect_search_backend() != OPENSEARCH,
-        "Skipped, because opensearch-dsl is not installed.",
-    )
-    def test_django_opensearch_dsl_moved_modules(self):
-        """Test Django-OpenSearch-DSL."""
-        for name, _, package in DJANGO_SEARCH_DSL_MOVED_MODULES:
-            self._test_moved_modules(name, package)
-
-    # **************************************************
-    # ************** django-elasticsearch-dsl **********
-    # **************************************************
-
-    @mock.patch.dict(
-        "os.environ", {"ANYSEARCH_PREFERRED_BACKEND": ELASTICSEARCH}
-    )
-    @unittest.skipIf(
-        detect_search_backend() != ELASTICSEARCH,
-        "Skipped, because opensearch-dsl is not installed.",
-    )
-    def test_django_elasticsearch_dsl_moved_attributes(self):
-        """Test Django-OpenSearch-DSL."""
-        name = "Document"
-        package = "django_elasticsearch_dsl"
-        module = "django_search_dsl"
-        with self.subTest(f"name: {name}, package: {package}"):
-            module_path = f"anysearch.{module}"
-            _module = import_module(module_path)
-            attr = getattr(_module, name)
-            self._assert_expected_attribute_path(attr, package, "DocType")
-
-    @mock.patch.dict(
-        "os.environ", {"ANYSEARCH_PREFERRED_BACKEND": ELASTICSEARCH}
-    )
-    @unittest.skipIf(
-        detect_search_backend() != ELASTICSEARCH,
-        "Skipped, because opensearch-dsl is not installed.",
-    )
-    def test_django_elasticsearch_dsl_moved_modules(self):
-        """Test Django-OpenSearch-DSL."""
-        for name, package, _ in DJANGO_SEARCH_DSL_MOVED_MODULES:
-            self._test_moved_modules(name, package)
+# class DjangoSearchDSLTestCase(AnySearchBaseTestCase):
+#     """Test Django search DSL."""
+#
+#     def _test_moved_attributes(self, name, package):
+#         self._test_module_moved_attributes("django_search_dsl", name, package)
+#
+#     def _test_moved_attributes_type_shortcuts(self, name, package):
+#         self._test_module_moved_attributes_type_shortcuts(
+#             "django_search_dsl", name, package
+#         )
+#
+#     def _test_moved_modules(self, name, package):
+#         self._test_module_moved_modules("django_search_dsl", name, package)
+#
+#     # **************************************************
+#     # **************** django-opensearch-dsl ***********
+#     # **************************************************
+#
+#     @mock.patch.dict("os.environ", {"ANYSEARCH_PREFERRED_BACKEND": OPENSEARCH})
+#     @unittest.skipIf(
+#         detect_search_backend() != OPENSEARCH,
+#         "Skipped, because opensearch-dsl is not installed.",
+#     )
+#     def test_django_opensearch_dsl_moved_attributes(self):
+#         """Test Django-OpenSearch-DSL."""
+#         for name, _, package in DJANGO_SEARCH_DSL_MOVED_ATTRIBUTES:
+#             self._test_moved_attributes(name, package)
+#
+#     @mock.patch.dict("os.environ", {"ANYSEARCH_PREFERRED_BACKEND": OPENSEARCH})
+#     @unittest.skipIf(
+#         detect_search_backend() != OPENSEARCH,
+#         "Skipped, because opensearch-dsl is not installed.",
+#     )
+#     def test_django_opensearch_dsl_moved_modules(self):
+#         """Test Django-OpenSearch-DSL."""
+#         for name, _, package in DJANGO_SEARCH_DSL_MOVED_MODULES:
+#             self._test_moved_modules(name, package)
+#
+#     # **************************************************
+#     # ************** django-elasticsearch-dsl **********
+#     # **************************************************
+#
+#     @mock.patch.dict(
+#         "os.environ", {"ANYSEARCH_PREFERRED_BACKEND": ELASTICSEARCH}
+#     )
+#     @unittest.skipIf(
+#         detect_search_backend() != ELASTICSEARCH,
+#         "Skipped, because opensearch-dsl is not installed.",
+#     )
+#     def test_django_elasticsearch_dsl_moved_attributes(self):
+#         """Test Django-OpenSearch-DSL."""
+#         name = "Document"
+#         package = "django_elasticsearch_dsl"
+#         module = "django_search_dsl"
+#         with self.subTest(f"name: {name}, package: {package}"):
+#             module_path = f"anysearch.{module}"
+#             _module = import_module(module_path)
+#             attr = getattr(_module, name)
+#             self._assert_expected_attribute_path(attr, package, "DocType")
+#
+#     @mock.patch.dict(
+#         "os.environ", {"ANYSEARCH_PREFERRED_BACKEND": ELASTICSEARCH}
+#     )
+#     @unittest.skipIf(
+#         detect_search_backend() != ELASTICSEARCH,
+#         "Skipped, because opensearch-dsl is not installed.",
+#     )
+#     def test_django_elasticsearch_dsl_moved_modules(self):
+#         """Test Django-OpenSearch-DSL."""
+#         for name, package, _ in DJANGO_SEARCH_DSL_MOVED_MODULES:
+#             self._test_moved_modules(name, package)
 
 
 class AnySearchTestCase(unittest.TestCase):
@@ -511,8 +511,8 @@ class AnySearchTestCase(unittest.TestCase):
     def test_get_installed_packages(self):
         """Test get_installed_packages."""
         installed_packages = get_installed_packages()
-        self.assertIn("Django", installed_packages)
+        self.assertIn("pytest", installed_packages)
 
     def test_check_if_package_is_installed(self):
         """Test get_installed_packages."""
-        self.assertTrue(check_if_package_is_installed("Django"))
+        self.assertTrue(check_if_package_is_installed("pytest"))

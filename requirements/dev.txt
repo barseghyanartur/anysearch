@@ -6,8 +6,6 @@
 #
 alabaster==0.7.12
     # via sphinx
-asgiref==3.5.2
-    # via django
 attrs==21.4.0
     # via pytest
 babel==2.10.3
@@ -37,16 +35,8 @@ coverage[toml]==6.4.2
     # via pytest-cov
 cryptography==37.0.4
     # via secretstorage
-dateutils==0.6.12
-    # via django-opensearch-dsl
 distlib==0.3.5
     # via virtualenv
-django==4.0.6
-    # via -r requirements/test.in
-django-elasticsearch-dsl==7.2.2
-    # via -r requirements/elasticsearch.in
-django-opensearch-dsl==0.3.0
-    # via -r requirements/opensearch.in
 docutils==0.18.1
     # via
     #   -r requirements/docs.in
@@ -58,9 +48,7 @@ elasticsearch==7.17.4
     #   -r requirements/elasticsearch.in
     #   elasticsearch-dsl
 elasticsearch-dsl==7.4.0
-    # via
-    #   -r requirements/elasticsearch.in
-    #   django-elasticsearch-dsl
+    # via -r requirements/elasticsearch.in
 filelock==3.7.1
     # via
     #   tox
@@ -101,9 +89,7 @@ mypy-extensions==0.4.3
 opensearch==0.9.2
     # via -r requirements/opensearch.in
 opensearch-dsl==1.0.0
-    # via
-    #   -r requirements/opensearch.in
-    #   django-opensearch-dsl
+    # via -r requirements/opensearch.in
 opensearch-py==2.0.0
     # via opensearch-dsl
 packaging==21.3
@@ -156,13 +142,12 @@ pytest-pythonpath==0.7.4
     # via -r requirements/test.in
 python-dateutil==2.8.2
     # via
-    #   dateutils
     #   elasticsearch-dsl
     #   opensearch-dsl
 pytz==2022.1
-    # via
-    #   babel
-    #   dateutils
+    # via babel
+pyyaml==6.0
+    # via -r requirements/test.in
 readme-renderer==35.0
     # via twine
 requests==2.28.1
@@ -184,7 +169,6 @@ secretstorage==3.3.2
 six==1.16.0
     # via
     #   bleach
-    #   django-elasticsearch-dsl
     #   elasticsearch-dsl
     #   opensearch-dsl
     #   python-dateutil
@@ -206,8 +190,6 @@ sphinxcontrib-qthelp==1.0.3
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
-sqlparse==0.4.2
-    # via django
 toml==0.10.2
     # via
     #   pytest
