@@ -15,6 +15,12 @@ are used for versioning (schema follows below):
   0.3.4 to 0.4).
 - All backwards incompatible changes are mentioned in this document.
 
+0.2.1
+-----
+2022-07-31
+
+- Adding some of the missing attributes to the ``search_dsl`` module.
+
 0.2
 ---
 2022-07-27

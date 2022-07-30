@@ -13,7 +13,7 @@ from importlib.util import spec_from_loader
 from typing import Set
 
 __title__ = "anysearch"
-__version__ = "0.2"
+__version__ = "0.2.1"
 __author__ = "Artur Barseghyan <artur.barseghyan@gmail.com>"
 __copyright__ = "2022 Artur Barseghyan"
 __license__ = "MIT"
@@ -459,7 +459,8 @@ _search_dsl_moved_attributes = [
     MovedAttribute("SearchAsYouType", "elasticsearch_dsl", "opensearch_dsl"),
     MovedAttribute("Short", "elasticsearch_dsl", "opensearch_dsl"),
     MovedAttribute("SparseVector", "elasticsearch_dsl", "opensearch_dsl"),
-    MovedAttribute("SparseVector", "elasticsearch_dsl", "opensearch_dsl"),
+    MovedAttribute("Text", "elasticsearch_dsl", "opensearch_dsl"),
+    MovedAttribute("TokenCount", "elasticsearch_dsl", "opensearch_dsl"),
     MovedAttribute("construct_field", "elasticsearch_dsl", "opensearch_dsl"),
     # .function
     MovedAttribute("SF", "elasticsearch_dsl", "opensearch_dsl"),
