@@ -325,7 +325,7 @@ for _search_attr in _search_moved_attributes:
 
 try:
     del _search_attr
-except:
+except NameError:
     pass
 
 _SearchMovedItems._moved_attributes = _search_moved_attributes
@@ -528,7 +528,7 @@ for _search_dsl_attr in _search_dsl_moved_attributes:
 
 try:
     del _search_dsl_attr
-except:
+except NameError:
     pass
 
 
@@ -556,23 +556,37 @@ _importer._add_module(search_dsl, "search_dsl")
 #     # **************** Moved modules ***************
 #     # **********************************************
 #     # django_elasticsearch_dsl/django_opensearch_dsl
-#     MovedModule("apps", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     MovedModule(
+#         "apps", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
 #     MovedModule(
 #         "documents", "django_elasticsearch_dsl", "django_opensearch_dsl"
 #     ),
 #     MovedModule(
 #         "exceptions", "django_elasticsearch_dsl", "django_opensearch_dsl"
 #     ),
-#     MovedModule("fields", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-#     # MovedModule("indices", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-#     # MovedModule("models", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     MovedModule(
+#         "fields", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
+#     # MovedModule(
+#     #     "indices", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     # ),
+#     # MovedModule(
+#     #     "models", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     # ),
 #     MovedModule(
 #         "registries", "django_elasticsearch_dsl", "django_opensearch_dsl"
 #     ),
-#     MovedModule("search", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-#     MovedModule("signals", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     MovedModule(
+#         "search", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
+#     MovedModule(
+#         "signals", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
 #     # Again, but now as attributes of the module.
-#     MovedAttribute("apps", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     MovedAttribute(
+#         "apps", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
 #     MovedAttribute(
 #         "documents", "django_elasticsearch_dsl", "django_opensearch_dsl"
 #     ),
@@ -582,8 +596,12 @@ _importer._add_module(search_dsl, "search_dsl")
 #     MovedAttribute(
 #         "fields", "django_elasticsearch_dsl", "django_opensearch_dsl"
 #     ),
-#     # MovedAttribute("indices", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-#     # MovedAttribute("models", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     # MovedAttribute(
+#     #     "indices", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     # ),
+#     # MovedAttribute(
+#     #     "models", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     # ),
 #     MovedAttribute(
 #         "registries", "django_elasticsearch_dsl", "django_opensearch_dsl"
 #     ),
@@ -599,7 +617,9 @@ _importer._add_module(search_dsl, "search_dsl")
 #     MovedAttribute(
 #         "Document", "django_elasticsearch_dsl", "django_opensearch_dsl"
 #     ),
-#     # MovedAttribute("Index", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     # MovedAttribute(
+#     #     "Index", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     # ),
 #     # **********************************************
 #     # ********* Additional moved attributes ********
 #     # **********************************************
@@ -649,13 +669,15 @@ _importer._add_module(search_dsl, "search_dsl")
 #     _django_search_dsl_moved_attributes
 # )
 #
-# django_search_dsl = _DjangoSearchDSLMovedItems(__name__ + ".django_search_dsl")
+# django_search_dsl = _DjangoSearchDSLMovedItems(
+#     __name__ + ".django_search_dsl"
+# )
 # _importer._add_module(django_search_dsl, "django_search_dsl")
-
-# **************************************************
-# **************************************************
-# **************************************************
-
+#
+# # **************************************************
+# # **************************************************
+# # **************************************************
+#
 # Index = getattr(moves, "Index", None)
 #
 # if not Index:
@@ -666,12 +688,12 @@ _importer._add_module(search_dsl, "search_dsl")
 #     from django_opensearch_dsl.apps import DEDConfig
 #     from django_opensearch_dsl.registries import registry
 #
-#
 #     class Index(DSLIndex):
 #         def __init__(self, *args, **kwargs):
 #             super(Index, self).__init__(*args, **kwargs)
 #             default_index_settings = deepcopy(
-#                 DEDConfig.default_index_settings())
+#                 DEDConfig.default_index_settings()
+#             )
 #             self.settings(**default_index_settings)
 #
 #         def document(self, document):

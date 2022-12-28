@@ -24,7 +24,7 @@ try:
     version = anysearch.__version__
     project = anysearch.__title__
     copyright = anysearch.__copyright__
-except Exception as e:
+except Exception:
     version = "0.1"
     project = "anysearch"
     copyright = "2022, Artur Barseghyan <artur.barseghyan@gmail.com>"
@@ -197,7 +197,8 @@ latex_documents = [
         "index",
         "anysearch.tex",
         "anysearch Documentation",
-        "Artur Barseghyan \\textless{}artur.barseghyan@gmail.com\\textgreater{}",
+        "Artur Barseghyan \\textless{}"
+        "artur.barseghyan@gmail.com\\textgreater{}",
         "manual",
     ),
 ]
@@ -253,7 +254,8 @@ texinfo_documents = [
         "anysearch Documentation",
         "Artur Barseghyan <artur.barseghyan@gmail.com>",
         "anysearch",
-        "Compatibility library for smooth support of Elasticsearch and OpenSearch (including both *search and *search-dsl packages)",
+        "Compatibility library for smooth support of Elasticsearch and "
+        "OpenSearch (including both *search and *search-dsl packages)",
         "Miscellaneous",
     ),
 ]

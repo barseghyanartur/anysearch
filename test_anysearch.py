@@ -104,8 +104,12 @@ SEARCH_DSL_MOVED_ATTRIBUTES_TYPE_SHORTCUTS = [
 ]
 SEARCH_DSL_MOVED_ATTRIBUTES = [
     # .
-    # MovedAttribute("__version__", "elasticsearch_dsl", "opensearch_dsl"),
-    # MovedAttribute("connections", "elasticsearch_dsl", "opensearch_dsl"),  # Probably remove
+    # MovedAttribute(
+    #     "__version__", "elasticsearch_dsl", "opensearch_dsl"
+    # ),
+    # MovedAttribute(
+    #     "connections", "elasticsearch_dsl", "opensearch_dsl"
+    # ),  # Probably remove
     # .aggs
     MovedAttribute("A", "elasticsearch_dsl", "opensearch_dsl"),
     # .analysis
@@ -241,14 +245,24 @@ SEARCH_DSL_MOVED_ATTRIBUTES = [
 #     MovedModule(
 #         "exceptions", "django_elasticsearch_dsl", "django_opensearch_dsl"
 #     ),
-#     MovedModule("fields", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-#     # MovedModule("indices", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-#     # MovedModule("models", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     MovedModule(
+#         "fields", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
+#     # MovedModule(
+#     #     "indices", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     # ),
+#     # MovedModule(
+#     #     "models", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     # ),
 #     MovedModule(
 #         "registries", "django_elasticsearch_dsl", "django_opensearch_dsl"
 #     ),
-#     MovedModule("search", "django_elasticsearch_dsl", "django_opensearch_dsl"),
-#     MovedModule("signals", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     MovedModule(
+#         "search", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
+#     MovedModule(
+#         "signals", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     ),
 # ]
 #
 # DJANGO_SEARCH_DSL_MOVED_ATTRIBUTES = [
@@ -258,7 +272,9 @@ SEARCH_DSL_MOVED_ATTRIBUTES = [
 #     MovedAttribute(
 #         "Document", "django_elasticsearch_dsl", "django_opensearch_dsl"
 #     ),
-#     # MovedAttribute("Index", "django_elasticsearch_dsl", "django_opensearch_dsl"),
+#     # MovedAttribute(
+#     #     "Index", "django_elasticsearch_dsl", "django_opensearch_dsl"
+#     # ),
 # ]
 
 
@@ -469,7 +485,9 @@ class SearchDSLTestCase(AnySearchBaseTestCase):
 #     # **************** django-opensearch-dsl ***********
 #     # **************************************************
 #
-#     @mock.patch.dict("os.environ", {"ANYSEARCH_PREFERRED_BACKEND": OPENSEARCH})
+#     @mock.patch.dict(
+#         "os.environ", {"ANYSEARCH_PREFERRED_BACKEND": OPENSEARCH}
+#     )
 #     @unittest.skipIf(
 #         detect_search_backend() != OPENSEARCH,
 #         "Skipped, because opensearch-dsl is not installed.",
@@ -479,7 +497,9 @@ class SearchDSLTestCase(AnySearchBaseTestCase):
 #         for name, _, package in DJANGO_SEARCH_DSL_MOVED_ATTRIBUTES:
 #             self._test_moved_attributes(name, package)
 #
-#     @mock.patch.dict("os.environ", {"ANYSEARCH_PREFERRED_BACKEND": OPENSEARCH})
+#     @mock.patch.dict(
+#         "os.environ", {"ANYSEARCH_PREFERRED_BACKEND": OPENSEARCH}
+#     )
 #     @unittest.skipIf(
 #         detect_search_backend() != OPENSEARCH,
 #         "Skipped, because opensearch-dsl is not installed.",
