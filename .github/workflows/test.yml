@@ -3,11 +3,13 @@
 
 name: test
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+#on:
+#  push:
+#    branches: [ "main" ]
+#  pull_request:
+#    branches: [ "main" ]
+
+on: [push, pull_request]
 
 jobs:
   # *************************************
@@ -39,6 +41,7 @@ jobs:
   # ************* Main tests ************
   # *************************************
   test:
+    needs: pre-commit
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
