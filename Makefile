@@ -84,3 +84,9 @@ build-docs:
 
 rebuild-docs:
 	sphinx-apidoc anysearch --full -o docs -H 'anysearch' -A 'Artur Barseghyan <artur.barseghyan@gmail.com>' -f -d 20
+
+detect-secrets-scan:
+	detect-secrets scan --baseline .secrets.baseline
+
+detect-secrets-create-baseline:
+	detect-secrets scan > .secrets.baseline

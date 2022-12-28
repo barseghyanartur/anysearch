@@ -20,6 +20,8 @@ are used for versioning (schema follows below):
 2022-12-28
 
 - Added more attributes to the ``search_dsl`` module.
+- Tested against Python 3.11.
+- Stop testing against Python 3.6 (due to GitHub CI difficulties).
 
 0.2.1
 -----
