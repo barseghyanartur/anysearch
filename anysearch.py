@@ -13,7 +13,7 @@ from importlib.util import spec_from_loader
 from typing import Set
 
 __title__ = "anysearch"
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 __author__ = "Artur Barseghyan <artur.barseghyan@gmail.com>"
 __copyright__ = "2022 Artur Barseghyan"
 __license__ = "MIT"
@@ -268,7 +268,9 @@ _search_moved_attributes = [
     MovedAttribute("transport", "elasticsearch", "opensearchpy"),
     MovedAttribute("helpers", "elasticsearch", "opensearchpy"),
     MovedAttribute("bulk", "elasticsearch.helpers", "opensearchpy.helpers"),
-    MovedAttribute("parallel_bulk", "elasticsearch.helpers", "opensearchpy.helpers"),
+    MovedAttribute(
+        "parallel_bulk", "elasticsearch.helpers", "opensearchpy.helpers"
+    ),
     # **********************************************
     # ************* Moved attributes ***************
     # **********************************************
@@ -494,6 +496,26 @@ _search_dsl_moved_attributes = [
     ),
     MovedAttribute(
         "MoreLikeThis", "elasticsearch_dsl.query", "opensearch_dsl.query"
+    ),
+    MovedAttribute(
+        "add_connection",
+        "elasticsearch_dsl.connections",
+        "opensearch_dsl.connections",
+    ),
+    MovedAttribute(
+        "remove_connection",
+        "elasticsearch_dsl.connections",
+        "opensearch_dsl.connections",
+    ),
+    MovedAttribute(
+        "create_connection",
+        "elasticsearch_dsl.connections",
+        "opensearch_dsl.connections",
+    ),
+    MovedAttribute(
+        "get_connection",
+        "elasticsearch_dsl.connections",
+        "opensearch_dsl.connections",
     ),
 ]
 

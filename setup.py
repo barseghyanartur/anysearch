@@ -2,7 +2,7 @@ import os
 
 from setuptools import setup
 
-version = "0.2.1"
+version = "0.2.2"
 
 try:
     readme = open(os.path.join(os.path.dirname(__file__), "README.rst")).read()
@@ -31,6 +31,7 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         "Environment :: Web Environment",
         "License :: OSI Approved :: MIT License",
         "Topic :: Internet :: WWW/HTTP :: Indexing/Search",

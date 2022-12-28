@@ -198,6 +198,35 @@ SEARCH_DSL_MOVED_ATTRIBUTES = [
     MovedAttribute("DslBase", "elasticsearch_dsl", "opensearch_dsl"),
     # .wrappers
     MovedAttribute("Range", "elasticsearch_dsl", "opensearch_dsl"),
+    # **********************************************
+    # ********** Additional moved attributes *******
+    # **********************************************
+    MovedAttribute(
+        "AggsProxy", "elasticsearch_dsl.search", "opensearch_dsl.search"
+    ),
+    MovedAttribute(
+        "MoreLikeThis", "elasticsearch_dsl.query", "opensearch_dsl.query"
+    ),
+    MovedAttribute(
+        "add_connection",
+        "elasticsearch_dsl.connections",
+        "opensearch_dsl.connections",
+    ),
+    MovedAttribute(
+        "remove_connection",
+        "elasticsearch_dsl.connections",
+        "opensearch_dsl.connections",
+    ),
+    MovedAttribute(
+        "create_connection",
+        "elasticsearch_dsl.connections",
+        "opensearch_dsl.connections",
+    ),
+    MovedAttribute(
+        "get_connection",
+        "elasticsearch_dsl.connections",
+        "opensearch_dsl.connections",
+    ),
 ]
 
 # DJANGO_SEARCH_DSL_MOVED_MODULES = [
