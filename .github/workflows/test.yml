@@ -76,7 +76,7 @@ jobs:
         flag-name: Run Tests
 
   coveralls_finish:
-    needs: build
+    needs: test
     runs-on: ubuntu-latest
     steps:
     - name: Coveralls Finished
