@@ -57,12 +57,12 @@ or latest stable version from GitHub:
 
 Configuration
 =============
-``AnySearch`` automatically detects whether you use ``Elasticsearch`` or 
+``AnySearch`` automatically detects whether you use ``Elasticsearch`` or
 ``OpenSearch`` by looking at which packages are installed.
 However, if you have both packages installed, you can instruct ``AnySearch``
 which one do you actually want to use. The way to do that is to set the
-``ANYSEARCH_PREFERRED_BACKEND`` environment variable to either ``Elasticsearch`` 
-or ``OpenSearch``.
+``ANYSEARCH_PREFERRED_BACKEND`` environment variable to either
+``Elasticsearch`` or ``OpenSearch``.
 
 For ``Elasticsearch``:
 
