@@ -39,7 +39,7 @@ Documentation is available on `Read the Docs
 
 Prerequisites
 =============
-- Python 3.6, 3.7, 3.8, 3.9 and 3.10.
+- Python 3.6, 3.7, 3.8, 3.9, 3.10 or 3.11.
 
 Installation
 ============
